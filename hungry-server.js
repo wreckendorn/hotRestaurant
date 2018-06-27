@@ -38,6 +38,9 @@ app.get("/reservations", function(req, res){
     res.sendFile(path.join(__dirname, "reservations.html"));
 });
 // app.get("/api/characters/:character")
+app.get("/api/reservations", function(req, res) {
+    return res.json(reservations);
+  });
 
 
 app.post("/api/reservations", function(req, res){
@@ -46,7 +49,7 @@ app.post("/api/reservations", function(req, res){
 
     reservations.push(newReservation);
     res.json(newReservation);
-})
+});
 
 
 
