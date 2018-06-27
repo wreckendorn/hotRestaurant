@@ -9,7 +9,21 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
-var reservations = [];
+var reservations = [{
+        name: "John Doe",
+        phoneNumber: "512-123-3556",
+        email: "johndoe@thedoefamily.com",
+    },
+    {
+        name: "1",
+        phoneNumber: "33",
+        email: "4",
+    },
+    {
+        name: "Yeezy",
+        phoneNumber: "000",
+        email: "shemademecrazy@help.com",
+    }];
 var waitlist = [];
 
 app.get("/", function(req, res){
