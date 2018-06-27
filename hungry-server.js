@@ -13,16 +13,19 @@ var reservations = [{
         name: "John Doe",
         phoneNumber: "512-123-3556",
         email: "johndoe@thedoefamily.com",
+        uniqueId: "johnny boi"
     },
     {
         name: "1",
         phoneNumber: "33",
         email: "4",
+        uniqueId: "numnum"
     },
     {
         name: "Yeezy",
         phoneNumber: "000",
         email: "shemademecrazy@help.com",
+        uniqueId: "lol"
     }];
 var waitlist = [];
 
@@ -38,15 +41,22 @@ app.get("/reservations", function(req, res){
     res.sendFile(path.join(__dirname, "reservations.html"));
 });
 // app.get("/api/characters/:character")
+app.get("/api/reservations", function(req, res) {
+    return res.json(reservations);
+  });
 
 
 app.post("/api/reservations", function(req, res){
     var newReservation = req.body;
     console.log(newReservation);
-
+    if(reservations.length < 5){
     reservations.push(newReservation);
     res.json(newReservation);
-})
+    }else{
+        waitlist.push(newReservation);
+        res.json(newReservation);
+    }
+});
 
 
 
