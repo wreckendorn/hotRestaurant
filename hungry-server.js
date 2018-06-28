@@ -49,6 +49,7 @@ app.get("/api/reservations", function(req, res) {
 app.post("/api/reservations", function(req, res){
     var newReservation = req.body;
     console.log(newReservation);
+    
     if(reservations.length < 5){
     reservations.push(newReservation);
     res.json(newReservation);
