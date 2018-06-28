@@ -80,21 +80,31 @@
   </div>
 
   <script type="text/javascript">
-    // Question: What does this code do?
+   
     $(".submit").on("click", function(event) {
       event.preventDefault();
       var newReservation = {
-        name: $("#name").val().trim(),
-        phoneNumber: $("#phoneNumber").val().trim(),
-        email: $("#email").val().trim(),
-        uniqueID: $("#uiqueID").val().trim()
+        name: $("#name").val(),
+        phoneNumber: $("#phoneNumber").val(),
+        email: $("#email").val(),
+        uniqueID: $("#uiqueID").val()
       };
 
-      // Question: What does this code do??
-      $.post("/api/characters", newReservation)
+    console.log(newReservation);
+
+      $.post("/api/tables", newReservation)
         .then(function(data) {
-          console.log("reservations.html", data);
-          alert("Adding reservation...");
+          if(data){
+            alert('you reserved a table');
+          }
+          else{ 
+            alert('you are on the waiting list');
+          }
+          $("#name").val("");
+          $("#phoneNumber").val("");
+          $("#email").val("");
+          $("#uiqueID").val("");
+          
         });
     });
   </script>
