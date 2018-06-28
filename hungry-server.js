@@ -22,6 +22,12 @@ var reservations = [{
         uniqueID: "numnum"
     },
     {
+        name: "2",
+        phoneNumber: "33333",
+        email: "44444",
+        uniqueID: "eeenumnum"
+    },
+    {
         name: "Yeezy",
         phoneNumber: "000",
         email: "shemademecrazy@help.com",
@@ -44,7 +50,9 @@ app.get("/reservations", function(req, res){
 app.get("/api/reservations", function(req, res) {
     return res.json(reservations);
   });
-
+app.get("/api/waitlist", function(req, res) {
+    return res.json(waitlist);
+  });
 
 app.post("/api/tables", function(req, res){
     var newReservation = req.body;
