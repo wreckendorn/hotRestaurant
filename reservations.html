@@ -37,26 +37,28 @@
           </div>
           <div class="panel-body">
 
-            <form role="form">
+            <form method="POST" role="form">
+
+            <!-- <form role="form"> -->
 
               <div class="form-group">
                 <label for="reserve-name">Name</label>
-                <input type="text" class="form-control" id="reserve-name">
+                <input type="text" class="form-control" id="name">
               </div>
 
               <div class="form-group">
                 <label for="reserve-phone">Phone Number</label>
-                <input type="text" class="form-control" id="reserve-phone">
+                <input type="text" class="form-control" id="phoneNumber">
               </div>
 
               <div class="form-group">
                 <label for="reserve-email">Email</label>
-                <input type="text" class="form-control" id="reserve-email">
+                <input type="text" class="form-control" id="email">
               </div>
 
               <div class="form-group">
                 <label for="reserve-unique-id">Unique ID</label>
-                <input type="text" class="form-control" id="reserve-unique-id">
+                <input type="text" class="form-control" id="uniqueID">
               </div>
 
               <button type="submit" class="btn btn-primary submit">Submit</button>
@@ -76,6 +78,36 @@
     </footer>
 
   </div>
+
+  <script type="text/javascript">
+   
+    $(".submit").on("click", function(event) {
+      event.preventDefault();
+      var newReservation = {
+        name: $("#name").val(),
+        phoneNumber: $("#phoneNumber").val(),
+        email: $("#email").val(),
+        uniqueID: $("#uniqueID").val()
+      };
+
+    console.log(newReservation);
+
+      $.post("/api/tables", newReservation)
+        .then(function(data) {
+          if(data){
+            alert('you reserved a table');
+          }
+          else{ 
+            alert('you are on the waiting list');
+          }
+          $("#name").val("");
+          $("#phoneNumber").val("");
+          $("#email").val("");
+          $("#uniqueID").val("");
+          
+        });
+    });
+  </script>
 
 </body>
 </html>

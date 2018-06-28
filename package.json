@@ -1,0 +1,23 @@
+{
+  "name": "hotrestaurant",
+  "version": "1.0.0",
+  "description": "not project 2",
+  "main": "data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wreckendorn/hotRestaurant.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wreckendorn/hotRestaurant/issues"
+  },
+  "homepage": "https://github.com/wreckendorn/hotRestaurant#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
+}

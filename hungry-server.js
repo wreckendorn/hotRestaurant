@@ -13,19 +13,25 @@ var reservations = [{
         name: "John Doe",
         phoneNumber: "512-123-3556",
         email: "johndoe@thedoefamily.com",
-        uniqueId: "johnny boi"
+        uniqueID: "johnny boi"
     },
     {
         name: "1",
         phoneNumber: "33",
         email: "4",
-        uniqueId: "numnum"
+        uniqueID: "numnum"
+    },
+    {
+        name: "2",
+        phoneNumber: "33333",
+        email: "44444",
+        uniqueID: "eeenumnum"
     },
     {
         name: "Yeezy",
         phoneNumber: "000",
         email: "shemademecrazy@help.com",
-        uniqueId: "lol"
+        uniqueID: "lol"
     }];
 var waitlist = [];
 
@@ -44,18 +50,19 @@ app.get("/reservations", function(req, res){
 app.get("/api/reservations", function(req, res) {
     return res.json(reservations);
   });
+app.get("/api/waitlist", function(req, res) {
+    return res.json(waitlist);
+  });
 
-
-app.post("/api/reservations", function(req, res){
+app.post("/api/tables", function(req, res){
     var newReservation = req.body;
     console.log(newReservation);
-    
     if(reservations.length < 5){
     reservations.push(newReservation);
-    res.json(newReservation);
+    res.json(true);
     }else{
         waitlist.push(newReservation);
-        res.json(newReservation);
+        res.json(false);
     }
 });
 
