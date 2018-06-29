@@ -60,4 +60,39 @@
 
   </div>
 
+  <script type="text/javascript">
+      $.get("/api/reservations/", function(data) {
+        console.log(data);
+        if (data) {
+          var tables = $("#tableSection");
+          var reservationDiv = $('<div>');
+          for (var i = 0; i<data.length; i++) {
+            console.log(data[i])
+            reservationDiv.append("<div class='reservationInfo'>" + (i + 1) + " " + data[i].uniqueID + "</div>")
+            tables.append(reservationDiv)
+          }        
+        }
+        else {
+          $("#name").text("No current reservations");
+        }
+      });
+
+      $.get("/api/waitlist/", function(data) {
+        console.log(data);
+        if (data) {
+          var tables = $("#waitlistSection");
+          var reservationDiv = $('<div>');
+          for (var i = 0; i<data.length; i++) {
+            console.log(data[i])
+            reservationDiv.append("<div class='reservationInfo'>" + (i + 1) + " " + data[i].uniqueID + "</div>")
+            tables.append(reservationDiv)
+          }        
+        }
+        else {
+          $("#name").text("No current reservations");
+        }
+      });
+  
+  </script>
+
 </body>
